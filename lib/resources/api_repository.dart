@@ -1,19 +1,20 @@
-import 'api_provider.dart';
+// import 'api_repository_impl.dart';
 
-class ApiRepository {
-  final _provider = ApiProvider();
+abstract class ApiRepository {
+  // final apiRepositoryImpl = ApiRepositoryImpl();
 
   Future<dynamic> fetchList({
-    pageKey,
-    pageSize,
+    required int pageKey,
+    required int pageSize,
     controller,
-  }) {
-    return _provider.fetchList(
-      pageKey: pageKey,
-      pageSize: pageSize,
-      controller: controller,
-    );
-  }
+  });
+  // {
+  //   return apiRepositoryImpl.fetchList(
+  //     pageKey: pageKey,
+  //     pageSize: pageSize,
+  //     controller: controller,
+  //   );
+  // }
 }
 
 class NetworkError extends Error {}

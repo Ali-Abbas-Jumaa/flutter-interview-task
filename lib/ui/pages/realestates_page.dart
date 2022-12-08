@@ -1,6 +1,7 @@
 import 'package:al_jad_test/blocs/realestate/realestate_bloc.dart';
 import 'package:al_jad_test/ui/components/realestate_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class RealestatePage extends StatefulWidget {
@@ -19,13 +20,12 @@ class _RealestatePageState extends State<RealestatePage> {
   @override
   void initState() {
     super.initState();
-    final RealestateBloc realestateBloc = RealestateBloc();
-
     _pagingController.addPageRequestListener((pageKey) {
-      realestateBloc.add(GetRealestateList(
-          pageKey: pageKey,
-          pageSize: _pageSize,
-          pageController: _pagingController));
+      context.read<RealestateBloc>().add(GetRealestateList(
+            pageKey: pageKey,
+            pageSize: _pageSize,
+            pageController: _pagingController,
+          ));
     });
   }
 
@@ -43,6 +43,8 @@ class _RealestatePageState extends State<RealestatePage> {
               title: item.title,
               area: item.area,
               image: item.image,
+              nearestPoint: item.nearestPoint,
+              price: item.price,
             ),
           ),
         ));

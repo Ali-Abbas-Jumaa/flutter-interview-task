@@ -12,8 +12,9 @@ class RealestateInitial extends RealestateState {}
 class RealestateLoading extends RealestateState {}
 
 class RealestateLoaded extends RealestateState {
-  final ResponseModel responseModel;
-  const RealestateLoaded(this.responseModel);
+  // final ResponseModel responseModel;
+  // const RealestateLoaded(this.responseModel);
+  const RealestateLoaded(dynamic);
 }
 
 class RealestateError extends RealestateState {
